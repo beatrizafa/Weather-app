@@ -1,6 +1,26 @@
 body {
   font-family: "Poppins", sans-serif;
-  background-color: #f9f7fe;
+  background-color: #f1f6fe;
+}
+
+header {
+  border-bottom: 1px solid #f1f6fe;
+  padding-bottom: 24px;
+}
+
+footer {
+  border-top: 1px solid #f1f6fe;
+  padding-top: 16px;
+  text-align: center;
+  font-size: 13px;
+  color: #a3aac2;
+}
+
+a {
+  color: #0c2d82;
+}
+a:visited {
+  color: #5c00d2;
 }
 .weather-app {
   justify-content: right;
@@ -10,4 +30,77 @@ body {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 12px;
   max-width: 600px;
+}
+
+.search-form-input {
+  background-color: #f6f9fe;
+  font-size: 16px;
+  border: none;
+  padding: 20px;
+  width: 75%;
+  border-radius: 6px;
+  font-family: "Poppins", sans-serif;
+}
+.search-form-input:hover {
+  background-color: #edf3fd;
+}
+.search-form-input::placeholder {
+  color: #858ead;
+}
+.search-form-button {
+  background-color: #78a8f1;
+  padding: 20px;
+  margin-left: 8px;
+  color: #ffffff;
+  border-radius: 12px;
+  border: none;
+  font-weight: 500;
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+}
+
+.search-form-button:hover {
+  background-color: #4f7bed;
+}
+
+.current-weather {
+  display: flex;
+  justify-content: space-between;
+  margin: 24px 0px;
+}
+
+h1.current-city {
+  margin-top: 0px;
+  margin-bottom: 24px;
+  font-size: 38px;
+  line-height: 48px;
+}
+
+.current-details {
+  margin: 0;
+  color: #858ead;
+}
+.current-details strong {
+  color: #6f4fed;
+}
+
+.current-temperature {
+  display: flex;
+}
+
+.current-temperature-value {
+  font-size: 80px;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.current-temperature-icon {
+  font-size: 48px;
+  margin-top: 24px;
+}
+.current-temparature-unit {
+  font-size: 28px;
+  position: relative;
+  top: 20px;
 }

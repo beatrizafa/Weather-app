@@ -13,15 +13,15 @@
   <body>
     <div class="weather-app">
       <header>
-        <form id="search-form">
+        <form class="search-form">
           <input
             type="search"
             placeholder="Enter a city..."
             required
-            class="search-input"
+            class="search-form-input"
             id="search-input"
           />
-          <input type="submit" value="Search" class="search-btn" />
+          <input type="submit" value="Search" class="search-form-button" />
         </form>
       </header>
       <main>
@@ -35,10 +35,9 @@
             </p>
           </div>
           <div class="current-temperature">
-            <span class="current-temperature-icon">☀️</span
-            ><span class="current-temperature-value" id="current-temperature"
-              >14</span
-            ><span class="current-temperature-unit">°C</span>
+            <div class="current-temperature-icon">☀️</div>
+            <div class="current-temperature-value">14</div>
+            <div class="current-temparature-unit">°C</div>
           </div>
         </div>
       </main>
