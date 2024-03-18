@@ -1,12 +1,22 @@
+alert("hello");
+
 function refreshWeather(response) {
   console.log(response.data.temperature.current);
   //console.log(apiUrl)//
   let temperatureElement = document.querySelector("#current-temperature-value");
   let currentTemperature = response.data.temperature.current;
   let cityElement = document.querySelector("#city");
-  cityElement.innerHTML = response.data.city;
+  let descriptionElement = document.querySelector("#current-description");
+  let windElement = document.querySelector("#current-wind");
+  let humidityElement = document.querySelector("#current-humidity");
+  let timeElement = document.querySelector("#current-date");
+  let date = new Date(response.data.time * 1000);
 
   temperatureElement.innerHTML = Math.round(currentTemperature);
+  cityElement.innerHTML = response.data.city;
+  descriptionElement.innerHTML = response.data.condition.description;
+  windElement.innerHTML = `${response.data.wind.speed} km/h`;
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
 }
 
 function searchCity(city) {
@@ -29,3 +39,4 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", searchSubmit);
 
 searchCity("Barcelona");
+//to display something by default//
