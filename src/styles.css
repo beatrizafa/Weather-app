@@ -95,10 +95,10 @@ h1.current-city {
   margin-left: 8px;
 }
 
-.current-temperature-icon {
-  width: 64px;
-  height: 64px;
-  margin-top: 12px;
+img.current-temperature-icon {
+  width: 88px !important;
+  height: 88px;
+  margin-top: 16px;
 }
 .current-temparature-unit {
   font-size: 28px;
