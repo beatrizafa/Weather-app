@@ -1,5 +1,3 @@
-alert("hello");
-
 function refreshWeather(response) {
   console.log(response.data.temperature.current);
   //console.log(apiUrl)//
