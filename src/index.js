@@ -7,3 +7,5 @@ function searchSubmit(event) {
 
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", searchSubmit);
+
+let apiUrl = "a017cf6758e1482b564bdt6545doc30a";
