@@ -96,8 +96,9 @@ h1.current-city {
 }
 
 .current-temperature-icon {
-  font-size: 48px;
-  margin-top: 24px;
+  width: 64px;
+  height: 64px;
+  margin-top: 12px;
 }
 .current-temparature-unit {
   font-size: 28px;
