@@ -105,3 +105,32 @@ img.current-temperature-icon {
   position: relative;
   top: 20px;
 }
+
+.weather-forecast {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+.weather-forecast-icon {
+  width: 64px;
+  height: 64px;
+  display: block;
+}
+
+.weather-forecast-date {
+  text-align: center;
+  color: #858ead;
+  font-weight: 300;
+  font-size: 14px;
+}
+.weather-forecast-temperatures {
+  text-align: center;
+  font-size: 14px;
+}
+.weather-forecast-max-temperature {
+  font-weight: 600;
+}
+
+.weather-forecast-min-temperature {
+  padding-left: 10px;
+}

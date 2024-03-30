@@ -62,3 +62,33 @@ searchFormElement.addEventListener("submit", searchSubmit);
 
 searchCity("Barcelona");
 //to display something by default//
+
+function displayForecast() {
+  // array with all the days of the week//
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  //variable empty, wher we want to put all forecast html to have injected eventually//
+  let forecastHtml = "";
+
+  days.forEach(function (weekday) {
+    forecastHtml =
+      forecastHtml +
+      `
+  <div class="forecast-day">
+    <div class="weather-forecast-date">${weekday}</div>
+    <img
+      src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png"
+      class="weather-forecast-icon"
+    />
+    <div class="weather-forecast-temperatures">
+      <span class="weather-forecast-max-temperature">16°</span>
+      <span class="weather-forecast-min-temperature">11°</span>
+    </div>
+  </div>
+`;
+  });
+  //once loop is over, adds the following information//
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHtml;
+}
+
+displayForecast();
