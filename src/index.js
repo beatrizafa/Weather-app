@@ -17,6 +17,7 @@ function refreshWeather(response) {
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
   timeElement.innerHTML = formatDate(date);
   iconElement.innerHTML = ` <img src= "${response.data.condition.icon_url}" class="current-temperature-icon"/>`;
+  getForcast(response.data.city);
 }
 
 let date = new Date();
@@ -63,7 +64,15 @@ searchFormElement.addEventListener("submit", searchSubmit);
 searchCity("Barcelona");
 //to display something by default//
 
-function displayForecast() {
+//new function to get forecast for a city//
+function getForcast(city) {
+  let apiKey = "a017cf6758e1482b564bdt6545doc30a";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
+  console.log(response.data);
   // array with all the days of the week//
   let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   //variable empty, wher we want to put all forecast html to have injected eventually//
@@ -90,5 +99,3 @@ function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
 }
-
-displayForecast();
