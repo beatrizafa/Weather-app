@@ -8,6 +8,7 @@ function refreshWeather(response) {
   let windElement = document.querySelector("#current-wind");
   let humidityElement = document.querySelector("#current-humidity");
   let timeElement = document.querySelector("#current-date");
+  let date = new Date();
   let iconElement = document.querySelector("#icon");
 
   temperatureElement.innerHTML = Math.round(currentTemperature);
@@ -20,7 +21,6 @@ function refreshWeather(response) {
   getForcast(response.data.city);
 }
 
-let date = new Date();
 function formatDate(date) {
   let days = [
     "Sunday",
@@ -58,13 +58,13 @@ function searchSubmit(event) {
   searchCity(searchInput.value);
 }
 
-let searchFormElement = document.querySelector("#search-form");
-searchFormElement.addEventListener("submit", searchSubmit);
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  //new date is the date of today//
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fr", "Sat"];
 
-searchCity("Barcelona");
-//to display something by default//
-
-//new function to get forecast for a city//
+  return days[date.getDay()];
+}
 function getForcast(city) {
   let apiKey = "a017cf6758e1482b564bdt6545doc30a";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
@@ -72,30 +72,39 @@ function getForcast(city) {
 }
 
 function displayForecast(response) {
-  console.log(response.data);
-  // array with all the days of the week//
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-  //variable empty, wher we want to put all forecast html to have injected eventually//
+  //variable empty, where we want to put all forecast html to have injected eventually//
   let forecastHtml = "";
 
-  days.forEach(function (weekday) {
-    forecastHtml =
-      forecastHtml +
-      `
+  //index defines what is going to be displayed from the array//
+  response.data.daily.forEach(function (weekday, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `
   <div class="forecast-day">
-    <div class="weather-forecast-date">${weekday}</div>
+    <div class="weather-forecast-date">${formatDay(weekday.time)}</div>
     <img
-      src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png"
-      class="weather-forecast-icon"
+      src="${weekday.condition.icon_url}" class="weather-forecast-icon
     />
     <div class="weather-forecast-temperatures">
-      <span class="weather-forecast-max-temperature">16°</span>
-      <span class="weather-forecast-min-temperature">11°</span>
+      <span class="weather-forecast-max-temperature">${Math.round(
+        weekday.temperature.maximum
+      )}º</span>
+      <span class="weather-forecast-min-temperature">${Math.round(
+        weekday.temperature.minimum
+      )}º</span>
     </div>
   </div>
 `;
+    }
   });
+
   //once loop is over, adds the following information//
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
 }
+searchCity("Barcelona");
+//to display something by default//
+let searchFormElement = document.querySelector("#search-form");
+searchFormElement.addEventListener("submit", searchSubmit);
+//new function to get forecast for a city//
